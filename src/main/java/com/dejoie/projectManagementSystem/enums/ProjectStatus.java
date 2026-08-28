@@ -1,6 +1,6 @@
 package com.dejoie.projectManagementSystem.enums;
 
-public enum projectStatus {
+public enum ProjectStatus {
 
         ACTIVE,
         COMPLETED,

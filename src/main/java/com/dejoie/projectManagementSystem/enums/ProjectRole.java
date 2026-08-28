@@ -1,5 +1,5 @@
 package com.dejoie.projectManagementSystem.enums;
 
-public enum projectRole {
+public enum ProjectRole {
     ADMIN,ADMIN_ASSISTANT,WORKER
 }

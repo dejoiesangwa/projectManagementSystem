@@ -1,41 +1,45 @@
 package com.dejoie.projectManagementSystem.entity;
 
-import com.dejoie.projectManagementSystem.enums.taskStatus;
+import com.dejoie.projectManagementSystem.enums.TaskStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "task")
+@Table(name = "Task")
 public class Task {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int task_id;
+    private int TaskId;
     @Column(unique = true,nullable = false)
-    private String task_tittle;
-    private taskStatus taskStatus;
+    private String TaskTittle;
+    @Enumerated(EnumType.STRING)
+    private TaskStatus taskStatus;
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "projectMemberId")
+    private ProjectMember ProjectMember;
     @ManyToOne
-    @JoinColumn(name = "projectMember_name")
-    private projectMember assignedTo;
-    @ManyToOne
-    @JoinColumn(name="project_name")
-    private project task_project;
+    @JoinColumn(name="projectId")
+    private Project project;
     private LocalDate dueDate;
 
-    public Task(projectMember assignedTo, LocalDate dueDate, project task_project, taskStatus taskStatus, String task_tittle) {
-        this.assignedTo = assignedTo;
+    public Task() {
+    }
+
+    public Task(ProjectMember ProjectMember, LocalDate dueDate, Project project, TaskStatus taskStatus, String TaskTittle) {
+        this.ProjectMember = ProjectMember;
         this.dueDate = dueDate;
-        this.task_project = task_project;
+        this.project = project;
         this.taskStatus = taskStatus;
-        this.task_tittle = task_tittle;
+        this.TaskTittle = TaskTittle;
     }
 
-    public projectMember getAssignedTo() {
-        return assignedTo;
+    public ProjectMember getProjectMember() {
+        return ProjectMember;
     }
 
-    public void setAssignedTo(projectMember assignedTo) {
-        this.assignedTo = assignedTo;
+    public void setProjectMember(ProjectMember ProjectMember) {
+        this.ProjectMember = ProjectMember;
     }
 
     public LocalDate getDueDate() {
@@ -46,35 +50,35 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public project getProject() {
-        return task_project;
+    public Project getProject() {
+        return project;
     }
 
-    public void setProject(project task_project) {
-        this.task_project = task_project;
+    public void setProject(Project project) {
+        this.project = project;
     }
 
-    public taskStatus getStatus() {
+    public TaskStatus getStatus() {
         return taskStatus;
     }
 
-    public void setStatus(taskStatus taskStatus) {
+    public void setStatus(TaskStatus taskStatus) {
         this.taskStatus = taskStatus;
     }
 
-    public int getTask_id() {
-        return task_id;
+    public int getTaskId() {
+        return TaskId;
     }
 
-    public void setTask_id(int task_id) {
-        this.task_id = task_id;
+    public void setId(int TaskId) {
+        this.TaskId = TaskId;
     }
 
-    public String getTitle() {
-        return task_tittle;
+    public String getTaskTittle() {
+        return TaskTittle;
     }
 
-    public void setTitle(String task_tittle) {
-        this.task_tittle = task_tittle;
+    public void setTaskTittle(String TaskTittle) {
+        this.TaskTittle = TaskTittle;
     }
 }
