@@ -12,19 +12,19 @@ public class projectMember {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int projectMember_id;
     @OneToOne
-    @JoinColumn(name = "user_id")
-    private users users;
-    @JoinColumn(name = "project_id")
+    @JoinColumn(name = "users_name")
+    private users projectMember_name;
+    @JoinColumn(name = "project_name")
     @ManyToOne
-    private project project;
+    private project project_of_projectMember;
     private projectRole role;
     private LocalDate dateAdded;
 
-    public projectMember(LocalDate dateAdded, project project, projectRole role, users users) {
+    public projectMember(LocalDate dateAdded, project project_of_projectMember, projectRole role, users projectMember_name) {
         this.dateAdded = dateAdded;
-        this.project = project;
+        this.project_of_projectMember = project_of_projectMember;
         this.role = role;
-        this.users = users;
+        this.projectMember_name = projectMember_name;
     }
 
     public LocalDate getDateAdded() {
@@ -35,12 +35,12 @@ public class projectMember {
         this.dateAdded = dateAdded;
     }
 
-    public project getProject() {
-        return project;
+    public project getProject_of_projectMember() {
+        return project_of_projectMember;
     }
 
-    public void setProject(project project) {
-        this.project = project;
+    public void setProject_of_projectMember(project project_of_projectMember) {
+        this.project_of_projectMember = project_of_projectMember;
     }
 
     public int getProjectMember_id() {
@@ -59,11 +59,11 @@ public class projectMember {
         this.role = role;
     }
 
-    public users getUsers() {
-        return users;
+    public users getProjectMember_name() {
+        return projectMember_name;
     }
 
-    public void setUsers(users users) {
-        this.users = users;
+    public void setProjectMember_name(users projectMember_name) {
+        this.projectMember_name = projectMember_name;
     }
 }

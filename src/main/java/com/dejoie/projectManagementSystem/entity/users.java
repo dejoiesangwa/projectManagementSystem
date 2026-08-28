@@ -10,16 +10,16 @@ public class users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_id;
-    @Column(nullable = false)
-    private String name;
+    @Column(nullable = false,unique = true)
+    private String users_name;
     @Column(nullable = false,unique = false)
     private String email;
     private String password;
     private LocalDate dateCreated;
 
-    public users(String name, String email,LocalDate dateCreated,String password) {
+    public users(String users_name, String email,LocalDate dateCreated,String password) {
         this.email = email;
-        this.name = name;
+        this.users_name = users_name;
         this.dateCreated = dateCreated;
         this.password = password;
 
@@ -34,11 +34,11 @@ public class users {
     }
 
     public String getName() {
-        return name;
+        return users_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String users_name) {
+        this.users_name = users_name;
     }
 
     public int getUser_id() {

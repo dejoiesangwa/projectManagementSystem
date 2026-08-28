@@ -12,24 +12,24 @@ public class project {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int project_id;
     @Column(nullable = false,unique = true)
-    private String name;
+    private String project_name;
     @Column(nullable = false)
-    private projectStatus status;
+    private projectStatus projectStatus;
     private LocalDate dateCreated;
 
 
-    public project(String name,projectStatus status,LocalDate dateCreated) {
-        this.name = name;
-        this.status = status;
+    public project(String project_name,projectStatus projectStatus,LocalDate dateCreated) {
+        this.project_name = project_name;
+        this.projectStatus = projectStatus;
         this.dateCreated = dateCreated;
     }
 
     public String getName() {
-        return name;
+        return project_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String project_name) {
+        this.project_name = project_name;
     }
 
     public int getProject_id() {
@@ -49,10 +49,10 @@ public class project {
     }
 
     public projectStatus getStatus() {
-        return status;
+        return projectStatus;
     }
 
-    public void setStatus(projectStatus status) {
-        this.status = status;
+    public void setStatus(projectStatus projectStatus) {
+        this.projectStatus = projectStatus;
     }
 }
